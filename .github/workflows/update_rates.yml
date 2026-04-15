@@ -23,7 +23,7 @@ jobs:
 
       - name: Fetch and save rates
         env:
-          EXCHANGERATE_API_KEY: ${{ secrets.EXCHANGE_RATE_API_KEY }}
+          EXCHANGE_RATE_API_KEY: ${{ secrets.EXCHANGE_RATE_API_KEY }}
         run: python update_rates.py
 
       - name: Commit and push changes
