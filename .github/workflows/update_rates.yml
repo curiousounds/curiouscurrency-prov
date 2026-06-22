@@ -33,7 +33,7 @@ jobs:
           git add rates.json
           if ! git diff --cached --quiet rates.json; then
             git commit -m "chore: update currency rates"
-            git pull --rebase
+            git pull --rebase origin main
             git push
           else
             echo "No changes to commit"
