@@ -8,7 +8,6 @@ if not API_KEY:
     raise ValueError("EXCHANGE_RATE_API_KEY environment variable is missing.")
 
 URL = f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/USD"
-TARGET_CURRENCIES = ["USD", "GBP", "EUR", "CAD", "AUD", "JPY"]
 
 try:
     # Fetch data from API
@@ -21,12 +20,9 @@ try:
         
         rates = data.get("conversion_rates", {})
         
-        # Filter only the target currencies
-        filtered_rates = {cur: rates[cur] for cur in TARGET_CURRENCIES if cur in rates}
-        
         # Save output as a compact JSON
         with open("rates.json", "w") as f:
-            json.dump(filtered_rates, f, separators=(',', ':'))
+            json.dump(rates, f, separators=(',', ':'))
             
         print("Successfully fetched and saved rates.json")
 
